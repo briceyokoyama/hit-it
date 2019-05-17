@@ -1,0 +1,25 @@
+{
+  "name": "hit-it",
+  "version": "1.0.0",
+  "description": "Read me for hit-it project.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack --watch --mode=development"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/briceyokoyama/hit-it.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/briceyokoyama/hit-it/issues"
+  },
+  "homepage": "https://github.com/briceyokoyama/hit-it#readme",
+  "devDependencies": {
+    "webpack": "^4.31.0",
+    "webpack-cli": "^3.3.2"
+  }
+}

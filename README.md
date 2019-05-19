@@ -1,1 +1,1 @@
-Read me for hit-it project.
+A hopefully fun hit the ball into the hole game.

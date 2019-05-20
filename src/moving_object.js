@@ -144,9 +144,9 @@ class MovingObject {
     audio.play();
   }
 
-  createSparks(pos) {
+  // createSparks(pos) {
 
-  }
+  // }
 }
 
 module.exports = MovingObject;

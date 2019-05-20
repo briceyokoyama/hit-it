@@ -5,10 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <script type="text/javascript" src="./bundle.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Orbitron&display=swap" rel="stylesheet">
   <style>
     html {
       padding: 0px;
       margin: 0px;
+      font-family: 'Orbitron', sans-serif;
     }
 
     body {
@@ -28,18 +30,44 @@
       border: 1px solid black;
     }
 
+    #start-menu {
+      background-color: black;
+      width: 600px;
+      height: 600px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+    }
+
+    #start-header {
+      font-size: 60px;
+      color: white;
+    }
+
+    #start-button {
+      color: white;
+    }
+
     #start-button:hover {
       cursor: pointer
     }
+
+    audio {
+      display: none;
+    }
+
   </style>
   <title>HIT-IT</title>
 </head>
 <body>
-  <div>
+  <div id="start-menu">
+    <div id="start-header">HIT-IT</div>
     <div id="start-button">
-      Hello
+      START
     </div>
   </div>
   <canvas></canvas>
+  <audio id="audio-player"></audio>
 </body>
 </html>

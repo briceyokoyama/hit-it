@@ -55,7 +55,7 @@ class Game {
   }
 
   checkCollisions(canvasEl, ctx) {
-    // this.sparks.push(...this.pb.hitBoundary(canvasEl));
+    let newSparks;
     this.pb.hitBoundary(canvasEl);
 
     this.obstacles.forEach(ob => {

@@ -132,9 +132,7 @@ class MovingObject {
 
   checkCollisions(obstacle) {
     if (this.collisionLeft(obstacle) || this.collisionRight(obstacle) || this.collisionTop(obstacle) || this.collisionBot(obstacle)) {
-      let audio = document.getElementById("audio-player")
-      audio.src = "briceyokoyama.github.io/hit-it//assets/sound/bounce.wav";
-      audio.play();
+      this.makeBounceSound();
       return [];
     }
     return false;
@@ -142,7 +140,7 @@ class MovingObject {
 
   makeBounceSound() {
     let audio = document.getElementById("audio-player")
-    audio.src = "briceyokoyama.github.io/hit-it//assets/sound/bounce.wav";
+    audio.src = "https://raw.githubusercontent.com/briceyokoyama/hit-it/master/assets/sound/bounce.wav";
     audio.play();
   }
 

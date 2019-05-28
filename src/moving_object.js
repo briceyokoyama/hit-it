@@ -52,10 +52,15 @@ class MovingObject {
 
   collisionLeft(obstacle) {
     let slope = this.vel[1]/this.vel[0];
-    let wallDim = obstacle.pos[0] - obstacle.width/2;
+    let xmidPoint = obstacle.pos[0] - obstacle.width / 2 * Math.cos(obstacle.angle);
+    let ymidPoint = obstacle.pos[1] - obstacle.width / 2 * Math.sin(obstacle.angle);
+    let xbottomCorner = xmidPoint + obstacle.height / 2 * Math.sin(obstacle.angle);
+    let ybottomCorner = ymidPoint + obstacle.height / 2 * Math.cos(obstacle.angle);
+    let xtopCorner = xmidPoint - obstacle.height / 2 * Math.sin(obstacle.angle);
+    let ytopCorner = ymidPoint - obstacle.height / 2 * Math.cos(obstacle.angle);
+
     let intersectionPT = this.prevPos[1] + slope * (wallDim - this.prevPos[0]);
-    let yLowerBound = obstacle.pos[1] - obstacle.height/2;
-    let yUpperBound = obstacle.pos[1] + obstacle.height/2;
+
     if (this.prevPos[0] < wallDim) {
       if (this.pos[0] > wallDim) {
         if(intersectionPT > yLowerBound && intersectionPT < yUpperBound) {

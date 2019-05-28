@@ -50,10 +50,6 @@ class MovingObject {
     }
   }
 
-  hitObstacle(obstacle) {
-
-  }
-
   collisionLeft(obstacle) {
     let slope = this.vel[1]/this.vel[0];
     let wallDim = obstacle.pos[0] - obstacle.width/2;
@@ -132,9 +128,7 @@ class MovingObject {
 
   checkCollisions(obstacle) {
     if (this.collisionLeft(obstacle) || this.collisionRight(obstacle) || this.collisionTop(obstacle) || this.collisionBot(obstacle)) {
-      let audio = document.getElementById("audio-player")
-      audio.src = "../assets/sound/bounce.wav";
-      audio.play();
+      this.makeBounceSound();
       return [];
     }
     return false;
@@ -142,12 +136,8 @@ class MovingObject {
 
   makeBounceSound() {
     let audio = document.getElementById("audio-player")
-    audio.src = "../assets/sound/bounce.wav";
+    audio.src = "./assets/sound/bounce.wav";
     audio.play();
-  }
-
-  createSparks(pos) {
-
   }
 }
 

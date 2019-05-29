@@ -50,10 +50,6 @@ class MovingObject {
     }
   }
 
-  hitObstacle(obstacle) {
-
-  }
-
   collisionLeft(obstacle) {
     let slope = this.vel[1]/this.vel[0];
     let wallDim = obstacle.pos[0] - obstacle.width/2;
@@ -143,10 +139,6 @@ class MovingObject {
     audio.src = "https://raw.githubusercontent.com/briceyokoyama/hit-it/master/assets/sound/bounce.wav";
     audio.play();
   }
-
-  // createSparks(pos) {
-
-  // }
 }
 
 module.exports = MovingObject;

@@ -50,25 +50,24 @@ class MovingObject {
     }
   }
 
-  collisionLeft(obstacle) {
+  collisionLeft(ob) {
     let slope = this.vel[1]/this.vel[0];
-    let xmidPoint = obstacle.pos[0] - obstacle.width / 2 * Math.cos(obstacle.angle);
-    let ymidPoint = obstacle.pos[1] - obstacle.width / 2 * Math.sin(obstacle.angle);
-    let xbottomCorner = xmidPoint + obstacle.height / 2 * Math.sin(obstacle.angle);
-    let ybottomCorner = ymidPoint + obstacle.height / 2 * Math.cos(obstacle.angle);
-    let xtopCorner = xmidPoint - obstacle.height / 2 * Math.sin(obstacle.angle);
-    let ytopCorner = ymidPoint - obstacle.height / 2 * Math.cos(obstacle.angle);
+    let wallSlope = (ob.ytopLeftPt - ob.ybottomLeftPt) / (ob.xtopLeftPt - ob.xbottomLeftPt);
+    let intersectionX = ((slope*this.pos[0] - this.pos[1]) - (wallSlope*ob.xbottomLeftPt - ob.ybottomLeftPt))/(slope - wallSlope);
+    let intersectionY = slope*intersectionX - (slope*this.pos[0] - this.pos[1]);
 
-    let intersectionPT = this.prevPos[1] + slope * (wallDim - this.prevPos[0]);
+    let yPrevDiff;
+    let yCurrDiff;
 
-    if (this.prevPos[0] < wallDim) {
-      if (this.pos[0] > wallDim) {
-        if(intersectionPT > yLowerBound && intersectionPT < yUpperBound) {
-          this.pos[0] = wallDim;
-          this.pos[1] = intersectionPT;
-          this.vel[0] = -this.vel[0]
-          return true;
-        }
+    if (this.prevPos[0] < intersectionX && this.pos[0] > intersectionX) {
+      debugger
+      yPrevDiff = this.prevPos[1] - intersectionY;
+      yCurrDiff = this.pos[1] - intersectionY;
+      if(yPrevDiff*yCurrDiff <= 0) {
+        this.pos[0] = intersectionX;
+        this.pos[1] = intersectionY;
+        this.vel[0] = -this.vel[0]
+        return true;
       }
     }
     return false;

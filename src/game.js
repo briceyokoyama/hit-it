@@ -21,7 +21,7 @@ class Game {
     );
   
     const obs2 = new Obstacle(
-      { pos: [200, 300], height: 300, width: 20, angle: 10, color: "#F739A3"}
+      { pos: [200, 300], height: 20, width: 150, angle: 0, color: "#F739A3"}
     );
   
     this.obstacles.push(obs1);

@@ -22,17 +22,12 @@ class Obstacle {
   draw(ctx) {
     ctx.fillStyle = this.color;
     ctx.translate(this.pos[0], this.pos[1]);
-    ctx.rotate(-this.angle * Math.PI / 180);
+    ctx.rotate(-this.getRadians());
     ctx.translate(-this.pos[0], -this.pos[1]);
     ctx.fillRect(this.pos[0] - this.width/2, this.pos[1] - this.height/2, this.width, this.height);
     ctx.translate(this.pos[0], this.pos[1]);
-    ctx.rotate(this.angle * Math.PI / 180);
+    ctx.rotate(this.getRadians());
     ctx.translate(-this.pos[0], -this.pos[1]);
-    ctx.beginPath();
-    ctx.moveTo(this.xtopRightPt, this.ytopRightPt);
-    ctx.lineTo(this.xbottomRightPt, this.ybottomRightPt);
-    ctx.strokeStyle = '#808000';
-    ctx.stroke();
   }
 
   getRadians() {

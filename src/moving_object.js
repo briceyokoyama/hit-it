@@ -50,12 +50,8 @@ class MovingObject {
     }
   }
 
-<<<<<<< HEAD
-  collisionLeft(obstacle) {
-=======
   collisionLeft(ob) {
 
->>>>>>> master
     let slope = this.vel[1]/this.vel[0];
 
     if (ob.angle === 0) {
@@ -268,11 +264,6 @@ class MovingObject {
 
   makeBounceSound() {
     let audio = document.getElementById("audio-player")
-<<<<<<< HEAD
-    audio.src = "https://raw.githubusercontent.com/briceyokoyama/hit-it/master/assets/sound/bounce.wav";
-    audio.play();
-  }
-=======
     audio.src = "./assets/sound/bounce.wav";
     audio.play();
   }
@@ -280,7 +271,6 @@ class MovingObject {
   getRadians(angle) {
     return angle * Math.PI/180
   }
->>>>>>> master
 }
 
 module.exports = MovingObject;

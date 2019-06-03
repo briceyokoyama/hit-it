@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <script type="text/javascript" src="./dist/bundle.js"></script>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link href="https://fonts.googleapis.com/css?family=Orbitron&display=swap" rel="stylesheet">
   <style>
     html {
@@ -19,7 +21,7 @@
       padding: 0px;
       margin: 0px;
       display: flex;
-      justify-content: center;
+      justify-content: space-around;
       align-items: center;
     }
 
@@ -28,6 +30,17 @@
       padding: 0px;
       margin: 0px;
       border: 1px solid black;
+    }
+
+    #about-menu {
+      background-color: black;
+      width: 600px;
+      height: 600px;
+      display: none;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+      color: white;
     }
 
     #start-menu {
@@ -45,16 +58,57 @@
       color: white;
     }
 
+    #options {
+      height: 90px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+    }
+
     #start-button {
       color: white;
     }
 
-    #start-button:hover {
+    #about-button, #close-button {
+      color: white;
+      font-size: 0.8em;
+    }
+
+    #start-button:hover, #about-button:hover, #close-button:hover {
       cursor: pointer
+    }
+
+    .about-buttons {
+      width: 100%;
+      height: 120px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
     }
 
     audio {
       display: none;
+    }
+
+    .big-icon {
+      font-size: 36px;
+    }
+
+    .about-text {
+      text-align: center;
+      padding: 0 30px;
+    }
+
+    .links {
+      width: 100px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .links a, .links a:visited {
+      color: purple;
     }
 
   </style>
@@ -63,11 +117,33 @@
 <body>
   <div id="start-menu">
     <div id="start-header">HIT-IT</div>
-    <div id="start-button">
-      START
+    <div id="options">
+      <div id="start-button">
+        START
+      </div>
+      <div id="about-button">
+        ABOUT
+      </div>
     </div>
   </div>
   <canvas></canvas>
+  <div id="about-menu">
+    <p class="about-text">
+        Try to get the ball as close to the target as possible.
+        Click in a spot to knock the ball away from that spot.
+        The closer you click to the ball, the farther it will go.
+    </p>
+    <div class="about-buttons">
+      <div></div>
+      <div id="close-button">
+        CLOSE
+      </div>
+      <div class="links">
+        <a href='https://github.com/briceyokoyama' target="_blank"><i class="fa fa-github big-icon" aria-hidden="true"></i></a>
+        <a href='https://www.linkedin.com/in/brice-yokoyama/' target="_blank"><i class="fab fa-linkedin-in big-icon"></i></a>
+      </div>
+    </div>
+  </div>
   <audio id="audio-player"></audio>
 </body>
 </html>

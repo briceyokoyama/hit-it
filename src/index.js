@@ -8,8 +8,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let start = document.getElementById("start-button");
   let about = document.getElementById("about-button");
-  start.addEventListener('click', startGame);
-  about.addEventListener('click', showAbout);
+  let highScores = document.getElementById("high-score-button");
+  start.addEventListener("click", startGame);
+  about.addEventListener("click", showAbout);
+  highScores.addEventListener("click", showHighScores);
 })
 
 const startGame = () => {
@@ -29,17 +31,35 @@ const startGame = () => {
 const showAbout = () => {
   let startMenu = document.getElementById("start-menu")
   let aboutMenu = document.getElementById("about-menu");
-  let aboutButton = document.getElementById("close-button");
+  let closeButton = document.getElementById("close-button");
   startMenu.style.display = "none";
   aboutMenu.style.display = "flex";
-  aboutButton.addEventListener('click', hideAbout);
+  closeButton.addEventListener("click", hideAbout);
 }
 
 const hideAbout = () => {
   let aboutMenu = document.getElementById("about-menu");
   let startMenu = document.getElementById("start-menu");
-  let aboutButton = document.getElementById("close-button");
+  let closeButton = document.getElementById("close-button");
   aboutMenu.style.display = "none";
   startMenu.style.display = "flex";
-  aboutButton.removeEventListener('click', hideAbout);
+  closeButton.removeEventListener("click", hideAbout);
+}
+
+const showHighScores = () => {
+  let aboutMenu = document.getElementById("about-menu");
+  let highScoreMenu = document.getElementById("high-score-menu");
+  let closeButton = document.getElementById("close-hs-button");
+  aboutMenu.style.display = "none";
+  highScoreMenu.style.display = "flex";
+  closeButton.addEventListener("click", hideHighScores);
+}
+
+const hideHighScores = () => {
+  let aboutMenu = document.getElementById("about-menu");
+  let highScoreMenu = document.getElementById("high-score-menu");
+  let closeButton = document.getElementById("close-hs-button");
+  highScoreMenu.style.display = "none";
+  aboutMenu.style.display = "flex";
+  closeButton.removeEventListener("click", hideHighScores);
 }

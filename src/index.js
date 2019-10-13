@@ -5,41 +5,78 @@ const Game = require("./game");
 const GameView = require("./game_view");
 
 document.addEventListener("DOMContentLoaded", () => {
-
-  let start = document.getElementById("start-button");
-  let about = document.getElementById("about-button");
-  start.addEventListener('click', startGame);
-  about.addEventListener('click', showAbout);
+  const start = document.getElementById("start-button");
+  const about = document.getElementById("about-button");
+  const highScores = document.getElementById("high-score-button");
+  start.addEventListener("click", startGame);
+  about.addEventListener("click", showAbout);
+  highScores.addEventListener("click", showHighScores);
 })
 
 const startGame = () => {
   const canvasEl = document.getElementsByTagName("canvas")[0]
-
-  let startMenu = document.getElementById("start-menu");
+  const endGameButton = document.getElementById("end-game-button");
+  const startMenu = document.getElementById("start-menu");
+  endGameButton.style.display = "inline";
+  endGameButton.style.position = "relative";
   startMenu.style.display = "none";
   canvasEl.style.display = "inline";
   canvasEl.height = 600;
   canvasEl.width = 600;
-  let ctx = canvasEl.getContext("2d");
+  const ctx = canvasEl.getContext("2d");
 
-  let game = new Game();
-  new GameView(game, ctx, canvasEl).start();
+  const game = new Game();
+  let gameView = new GameView(game, ctx, canvasEl);
+  gameView.start();
+  endGameButton.addEventListener("click", endGame(gameView));
+}
+
+const endGame = () => {
+  return (gameView) => {
+    const canvasEl = document.getElementsByTagName("canvas")[0]
+    const endGameButton = document.getElementById("end-game-button");
+    const startMenu = document.getElementById("start-menu");
+    endGameButton.style.display = "none";
+    startMenu.style.display = "flex";
+    canvasEl.style.display = "none";
+    let [clicks, score] = gameView.end();
+    gameView = {};
+    endGameButton.removeEventListener("click", endGame);
+  }
 }
 
 const showAbout = () => {
-  let startMenu = document.getElementById("start-menu")
-  let aboutMenu = document.getElementById("about-menu");
-  let aboutButton = document.getElementById("close-button");
+  const startMenu = document.getElementById("start-menu")
+  const aboutMenu = document.getElementById("about-menu");
+  const closeButton = document.getElementById("close-button");
   startMenu.style.display = "none";
   aboutMenu.style.display = "flex";
-  aboutButton.addEventListener('click', hideAbout);
+  closeButton.addEventListener("click", hideAbout);
 }
 
 const hideAbout = () => {
-  let aboutMenu = document.getElementById("about-menu");
-  let startMenu = document.getElementById("start-menu");
-  let aboutButton = document.getElementById("close-button");
+  const aboutMenu = document.getElementById("about-menu");
+  const startMenu = document.getElementById("start-menu");
+  const closeButton = document.getElementById("close-button");
   aboutMenu.style.display = "none";
   startMenu.style.display = "flex";
-  aboutButton.removeEventListener('click', hideAbout);
+  closeButton.removeEventListener("click", hideAbout);
+}
+
+const showHighScores = () => {
+  const aboutMenu = document.getElementById("about-menu");
+  const highScoreMenu = document.getElementById("high-score-menu");
+  const closeButton = document.getElementById("close-hs-button");
+  aboutMenu.style.display = "none";
+  highScoreMenu.style.display = "flex";
+  closeButton.addEventListener("click", hideHighScores);
+}
+
+const hideHighScores = () => {
+  const aboutMenu = document.getElementById("about-menu");
+  const highScoreMenu = document.getElementById("high-score-menu");
+  const closeButton = document.getElementById("close-hs-button");
+  highScoreMenu.style.display = "none";
+  aboutMenu.style.display = "flex";
+  closeButton.removeEventListener("click", hideHighScores);
 }

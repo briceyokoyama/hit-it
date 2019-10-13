@@ -11,6 +11,7 @@ class Game {
     this.sparks = [];
     this.dist = this.pb.getDistance(this.target);
     this.clicks = 0;
+    this.score = Infinity;
 
     this.addObstacles();
   }
@@ -50,7 +51,7 @@ class Game {
     ctx.textAlign = "end";
     ctx.font = '18px Orbitron';
     ctx.fillStyle = "#ffffff";
-    ctx.fillText(`dist: ${this.dist}`, 585, 25);
+    ctx.fillText(`score: ${this.score}`, 585, 25);
     ctx.fillText(`clicks: ${this.clicks}`, 585, 60);
   }
 
@@ -66,6 +67,7 @@ class Game {
 
   calcDist() {
     this.dist = this.pb.getDistance(this.target);
+    this.score = this.clicks ? (this.dist * this.clicks).toFixed(3) : Infinity;
   }
 }
 

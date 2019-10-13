@@ -5,7 +5,6 @@ const Game = require("./game");
 const GameView = require("./game_view");
 
 document.addEventListener("DOMContentLoaded", () => {
-
   const start = document.getElementById("start-button");
   const about = document.getElementById("about-button");
   const highScores = document.getElementById("high-score-button");
@@ -19,6 +18,7 @@ const startGame = () => {
   const endGameButton = document.getElementById("end-game-button");
   const startMenu = document.getElementById("start-menu");
   endGameButton.style.display = "inline";
+  endGameButton.style.position = "relative";
   startMenu.style.display = "none";
   canvasEl.style.display = "inline";
   canvasEl.height = 600;

@@ -11,6 +11,13 @@ class GameView {
     this.doStuff();
   }
 
+  end() {
+    return ({
+      distance: this.game.distance,
+      clicks: this.game.clicks
+    })
+  }
+
   handleClick(e) {
     this.game.addClick();
     let rect = e.target.getBoundingClientRect();

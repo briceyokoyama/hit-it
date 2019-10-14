@@ -21,7 +21,8 @@
       padding: 0px;
       margin: 0px;
       display: flex;
-      justify-content: space-around;
+      flex-direction: column;
+      justify-content: center;
       align-items: center;
     }
 
@@ -70,13 +71,29 @@
       color: white;
     }
 
-    #about-button, #close-button {
+    #about-button, #close-button, #high-score-button {
       color: white;
       font-size: 0.8em;
     }
 
-    #start-button:hover, #about-button:hover, #close-button:hover {
+    #end-game-button {
+      display: none;
+      margin-top: 10px;
+    }
+
+    #start-button:hover, #about-button:hover, #close-button:hover, #high-score-button:hover, #close-hs-button, #end-game-button {
       cursor: pointer
+    }
+
+    #high-score-menu {
+      background-color: black;
+      width: 600px;
+      height: 600px;
+      display: none;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+      color: white;
     }
 
     .about-buttons {
@@ -134,7 +151,7 @@
         The closer you click to the ball, the farther it will go.
     </p>
     <div class="about-buttons">
-      <div></div>
+      <div id="high-score-button">HIGH SCORES</div>
       <div id="close-button">
         CLOSE
       </div>
@@ -144,6 +161,12 @@
       </div>
     </div>
   </div>
+  <div id="high-score-menu">
+    <div id="close-hs-button">
+      CLOSE
+    </div>
+  </div>
+  <div id="end-game-button">END GAME</div>
   <audio id="audio-player"></audio>
 </body>
 </html>
